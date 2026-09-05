@@ -7,6 +7,9 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private float m_Speed = 12.0f;
 
+    [SerializeField]
+    private int m_Damage = 5;
+
     private Rigidbody2D m_Rigidbody;
     private SpriteRenderer m_Renderer;
 
@@ -41,5 +44,13 @@ public class Projectile : MonoBehaviour
             || bounds.min.x > center.x + halfWidth
             || bounds.max.y < center.y - halfHeight
             || bounds.min.y > center.y + halfHeight;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out HealthComponent otherHealth))
+        {
+            otherHealth.TakeDamage(m_Damage);
+        }
     }
 }
