@@ -148,11 +148,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020d5b819016f92488af26eda503d38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  m_Speed: 6
-  m_BoundsPadding: {x: 0.5, y: 0.5}
+  m_Speed: 3
+  m_StopY: 2
   m_ProjectilePrefab: {fileID: 2990000086137114604, guid: 1c334e4acdc6184419824b828d4734b8, type: 3}
   m_Muzzle: {fileID: 7062565280507781694}
   m_FireRate: 0.5
+  m_MinFireDelay: 0.5
+  m_MaxFireDelay: 1.5
 --- !u!61 &1709535948078536103
 BoxCollider2D:
   m_ObjectHideFlags: 0

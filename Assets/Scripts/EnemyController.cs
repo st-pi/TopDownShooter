@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField]
-    private float m_Speed = 6.0f;
+    private float m_Speed = 3.0f;
 
     [SerializeField]
-    private Vector2 m_BoundsPadding = new Vector2(0.5f, 0.5f);
+    private float m_StopY = 2.0f;
 
     [SerializeField]
     private Projectile m_ProjectilePrefab;
@@ -19,9 +19,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float m_FireRate = 10.0f;
 
+    [SerializeField]
+    private float m_MinFireDelay = 0.5f;
+
+    [SerializeField]
+    private float m_MaxFireDelay = 1.5f;
+
     private HealthComponent m_HealthComponent;
     private Rigidbody2D m_Rigidbody;
-    // private Vector2 m_MoveInput;
     private float m_NextFireTime;
 
     private void Awake()
@@ -33,6 +38,7 @@ public class EnemyController : MonoBehaviour
     private void OnEnable()
     {
         m_HealthComponent.OnDamageTaken += OnDamageTaken;
+        m_NextFireTime = Time.time + Random.Range(m_MinFireDelay, m_MaxFireDelay);
     }
 
     private void OnDisable()
@@ -50,29 +56,23 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Vector2 target = m_Rigidbody.position + (m_MoveInput * (m_Speed * Time.fixedDeltaTime));
-        // m_Rigidbody.MovePosition(ClampToView(target));
+        Vector2 position = m_Rigidbody.position;
+        float targetX = position.x;
+
+        if (GameManager.Instance.TryGetPlayerPosition(out Vector2 playerPosition))
+        {
+            targetX = playerPosition.x;
+        }
+
+        Vector2 target = new Vector2(targetX, m_StopY);
+
+        m_Rigidbody.MovePosition(Vector2.MoveTowards(position, target, m_Speed * Time.fixedDeltaTime));
     }
 
     private void Fire()
     {
         Instantiate(m_ProjectilePrefab, m_Muzzle.position, m_Muzzle.rotation);
         m_NextFireTime = Time.time + (1.0f / m_FireRate);
-    }
-
-    private Vector2 ClampToView(Vector2 position)
-    {
-        Camera camera = Camera.main;
-        float halfHeight = camera.orthographicSize;
-        float halfWidth = halfHeight * camera.aspect;
-        Vector2 center = camera.transform.position;
-
-        float minX = center.x - halfWidth + m_BoundsPadding.x;
-        float maxX = center.x + halfWidth - m_BoundsPadding.x;
-        float minY = center.y - halfHeight + m_BoundsPadding.y;
-        float maxY = center.y + halfHeight - m_BoundsPadding.y;
-
-        return new Vector2(Mathf.Clamp(position.x, minX, maxX), Mathf.Clamp(position.y, minY, maxY));
     }
 
     private void OnDamageTaken(int damageAmountTaken)
