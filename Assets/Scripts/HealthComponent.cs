@@ -7,6 +7,7 @@ public class HealthComponent : MonoBehaviour
     private int m_MaxHealth = 100;
     private int m_Health;
     public int Health => m_Health;
+    public int MaxHealth => m_MaxHealth;
 
     public event System.Action<int> OnDamageTaken;
 
