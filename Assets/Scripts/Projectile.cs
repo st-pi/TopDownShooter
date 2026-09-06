@@ -10,6 +10,9 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private int m_Damage = 5;
 
+    [SerializeField]
+    private ParticleSystem m_ImpactEffect;
+
     private Rigidbody2D m_Rigidbody;
     private SpriteRenderer m_Renderer;
 
@@ -51,6 +54,10 @@ public class Projectile : MonoBehaviour
         if (collision.TryGetComponent(out HealthComponent otherHealth))
         {
             otherHealth.TakeDamage(m_Damage);
+            Instantiate(m_ImpactEffect, transform.position, transform.rotation);
+
+            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

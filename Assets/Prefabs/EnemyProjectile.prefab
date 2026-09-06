@@ -181,3 +181,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   m_Speed: 12
   m_Damage: 5
+  m_ImpactEffect: {fileID: 2935546065731526433, guid: b86b682515389354bb588f25c5ace7fd, type: 3}
