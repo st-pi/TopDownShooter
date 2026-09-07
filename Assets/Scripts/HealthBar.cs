@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class HealthBar : MonoBehaviour
@@ -45,7 +44,6 @@ public class HealthBar : MonoBehaviour
         {
             Vector3 localScale = m_FillRenderer.transform.localScale;
             localScale.x = Mathf.Clamp01((float)m_HealthComponent.Health / m_HealthComponent.MaxHealth);
-            Debug.Log("HealthBar new scale.x " + localScale.x);
             m_FillRenderer.transform.localScale = localScale;
         }
     }
