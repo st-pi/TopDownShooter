@@ -1,11 +1,10 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerHUD : MonoBehaviour
 {
     [SerializeField]
-    private Image m_HealthFill;
+    private Transform m_FillTransform;
 
     [SerializeField]
     private TMP_Text m_LifeText;
@@ -19,12 +18,15 @@ public class PlayerHUD : MonoBehaviour
             return;
         }
 
-        m_HealthFill.fillAmount = (float)health / maxHealth;
-
-        if (health != m_DisplayedHealth)
+        if (health == m_DisplayedHealth)
         {
-            m_DisplayedHealth = health;
-            m_LifeText.text = $"{health} / {maxHealth}";
+            return;
         }
+
+        var scale = m_FillTransform.localScale;
+        scale.x = (float)health / maxHealth;
+        m_FillTransform.localScale = scale;
+        m_DisplayedHealth = health;
+        m_LifeText.text = $"{health} / {maxHealth}";
     }
 }
