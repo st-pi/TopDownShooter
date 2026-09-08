@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 3931264664946889914}
   - component: {fileID: 1183114094360151453}
   - component: {fileID: 4830917693531203284}
+  - component: {fileID: 761971325280256955}
+  - component: {fileID: 2097778407890397795}
+  - component: {fileID: 5570556817462577401}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -108,13 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a6b88ce4800f94c8db9ace5e206d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  m_MoveAction: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_AttackAction: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_Speed: 6
-  m_BoundsPadding: {x: 0.4, y: 0.5}
-  m_ProjectilePrefab: {fileID: 2990000086137114604, guid: 656ff719866a698468031aa00754b45b, type: 3}
-  m_Muzzle: {fileID: 1187791307962007683}
-  m_FireRate: 6
 --- !u!50 &3931264664946889914
 Rigidbody2D:
   serializedVersion: 5
@@ -191,6 +187,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   m_MaxHealth: 50
+--- !u!114 &761971325280256955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358217843068073111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9857deb65b9ea664d9264ddaac152cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAiming
+  m_AimAction: {fileID: 3050869329481352466, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+--- !u!114 &2097778407890397795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358217843068073111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491bdee494168f347937f94cff1396e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  m_MoveAction: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_Speed: 6
+  m_BoundsPadding: {x: 0.5, y: 0.5}
+--- !u!114 &5570556817462577401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358217843068073111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b7e335110bcdb4faab5be2e8890b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShooter
+  m_AttackAction: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_ProjectilePrefab: {fileID: 2990000086137114604, guid: 656ff719866a698468031aa00754b45b, type: 3}
+  m_Muzzle: {fileID: 1187791307962007683}
+  m_FireRate: 6
 --- !u!1 &1670964130808471899
 GameObject:
   m_ObjectHideFlags: 0

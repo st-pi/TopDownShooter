@@ -9,10 +9,17 @@ public class HealthBar : MonoBehaviour
     private SpriteRenderer m_FillRenderer;
 
     HealthComponent m_HealthComponent;
+    private Vector3 m_OffsetPos;
 
     private void Awake()
     {
         m_HealthComponent = GetComponentInParent<HealthComponent>();
+        m_OffsetPos = transform.localPosition;
+    }
+
+    private void LateUpdate()
+    {
+        transform.SetPositionAndRotation(transform.parent.position + m_OffsetPos, Quaternion.identity);
     }
 
     private void OnEnable()
