@@ -530,7 +530,7 @@ MonoBehaviour:
   m_text: 40/50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -914,7 +914,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   m_PlayerPrefab: {fileID: 8283893474259055483, guid: 6367688b2907b1347820cbd5aaeebbb2, type: 3}
-  m_EnemyPrefab: {fileID: 8728386871230775491, guid: 2c31a8aa830fe2d45aec4101802dc0fd, type: 3}
+  m_EnemyPrefabs:
+  - {fileID: 8728386871230775491, guid: 2c31a8aa830fe2d45aec4101802dc0fd, type: 3}
+  - {fileID: 8728386871230775491, guid: 2f76b042639d36746b4a378bb0e5ba03, type: 3}
 --- !u!1 &1245364024
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 1007239697637127295}
   - component: {fileID: 8728386871230775491}
   - component: {fileID: 1709535948078536103}
-  - component: {fileID: 1434336796749439499}
-  - component: {fileID: 6445111080422397869}
+  - component: {fileID: 6223132388801966108}
+  - component: {fileID: 1063885423953894722}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: EnemyUFO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,10 +33,9 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7062565280507781694}
   - {fileID: 4575030810148911090}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -89,7 +88,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 55456737f0332f04b8068422e58862a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8cc4be80364322a429014bc4f08426dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -138,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09ec9c78ae418a4ba4c1674342f32bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
-  m_MaxHealth: 20
+  m_MaxHealth: 10
 --- !u!114 &8728386871230775491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +188,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.98, y: 0.5}
+    oldSize: {x: 0.91, y: 0.91}
     newSize: {x: 0.98, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -197,7 +196,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.98, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &1434336796749439499
+--- !u!114 &6223132388801966108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,12 +205,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 689039491703777673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17fb38e894380a54c9f2eb06a52f3cf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 52066e63bf8c39f48b21e53e84e2fcd5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMoverMovement
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyChaseMovement
   m_Speed: 3
-  m_StopY: 2
---- !u!114 &6445111080422397869
+--- !u!114 &1063885423953894722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,14 +218,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 689039491703777673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09ae5240e78911b4fb345b7bbe4c10f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d12ad9b765769242807f1374f8f7539, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  m_ProjectilePrefab: {fileID: 2990000086137114604, guid: 1c334e4acdc6184419824b828d4734b8, type: 3}
-  m_Muzzle: {fileID: 7062565280507781694}
-  m_FireRate: 2.5
-  m_MinFireDelay: 0.5
-  m_MaxFireDelay: 1.5
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyKamikaze
+  m_DamageOnExplosion: 5
+  m_ImpactEffect: {fileID: 2935546065731526433, guid: b86b682515389354bb588f25c5ace7fd, type: 3}
+  m_TargetLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &3054590122582065016
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,37 +274,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthBar
   m_BackgroundRenderer: {fileID: 9105907214424789634}
   m_FillRenderer: {fileID: 7807338881350712590}
---- !u!1 &5873892213154996723
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7062565280507781694}
-  m_Layer: 8
-  m_Name: Muzzle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7062565280507781694
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5873892213154996723}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: -0.176, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7561545351693236797}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &7198944180446074783
 GameObject:
   m_ObjectHideFlags: 0
