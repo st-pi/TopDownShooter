@@ -1,21 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerShooter : MonoBehaviour
+public class PlayerShooter : Shooter
 {
     [SerializeField]
     private InputActionReference m_AttackAction;
-
-    [SerializeField]
-    private Projectile m_ProjectilePrefab;
-
-    [SerializeField]
-    private Transform m_Muzzle;
-
-    [SerializeField]
-    private float m_FireRate = 6.0f;
-
-    private float m_NextFireTime;
 
     private void OnEnable()
     {
@@ -27,12 +16,11 @@ public class PlayerShooter : MonoBehaviour
         m_AttackAction.action.Disable();
     }
 
-    private void Update()
+    protected override void Update()
     {
-        if (m_AttackAction.action.IsPressed() && Time.time >= m_NextFireTime)
+        if (m_AttackAction.action.IsPressed())
         {
-            Instantiate(m_ProjectilePrefab, m_Muzzle.position, m_Muzzle.rotation);
-            m_NextFireTime = Time.time + (1.0f / m_FireRate);
+            TryToFire();
         }
     }
 }
