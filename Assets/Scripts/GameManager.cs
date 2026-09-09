@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class GameManager : MonoBehaviour
     private PlayerController m_Player;
 
     private HealthComponent m_PlayerHealth;
+
+    [SerializeField]
+    private GameObject m_EndScreen;
 
     public bool TryGetPlayerHealth(out int health, out int maxHealth)
     {
@@ -58,5 +62,18 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Init();
+    }
+
+    public void FinishGame()
+    {
+        // temp, this is to dangerous
+        Time.timeScale = 0.0f;
+        m_EndScreen.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
