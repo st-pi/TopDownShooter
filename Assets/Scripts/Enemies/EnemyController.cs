@@ -53,8 +53,6 @@ public class EnemyController : MonoBehaviour
 
     private void OnDamageTaken(int damageAmountTaken)
     {
-        Debug.Log("Enemy received " + damageAmountTaken + " damage, new health: " + m_HealthComponent.Health);
-
         if (m_HealthComponent.Health <= 0)
         {
             GameManager.Instance.AddScore(m_ScoreWorth);
