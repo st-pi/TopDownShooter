@@ -37,16 +37,13 @@ public class Projectile : MonoBehaviour
 
     private bool IsOutsideView()
     {
-        Camera camera = Camera.main;
-        float halfHeight = camera.orthographicSize;
-        float halfWidth = halfHeight * camera.aspect;
-        Vector2 center = camera.transform.position;
+        Rect view = Camera.main.GetWorldRect();
         Bounds bounds = m_Renderer.bounds;
 
-        return bounds.max.x < center.x - halfWidth
-            || bounds.min.x > center.x + halfWidth
-            || bounds.max.y < center.y - halfHeight
-            || bounds.min.y > center.y + halfHeight;
+        return bounds.max.x < view.xMin
+            || bounds.min.x > view.xMax
+            || bounds.max.y < view.yMin
+            || bounds.min.y > view.yMax;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

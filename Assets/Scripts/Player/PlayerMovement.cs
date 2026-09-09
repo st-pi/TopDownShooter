@@ -44,15 +44,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 ClampToView(Vector2 position)
     {
-        Camera camera = Camera.main;
-        float halfHeight = camera.orthographicSize;
-        float halfWidth = halfHeight * camera.aspect;
-        Vector2 center = camera.transform.position;
+        Rect view = Camera.main.GetWorldRect();
 
-        float minX = center.x - halfWidth + m_BoundsPadding.x;
-        float maxX = center.x + halfWidth - m_BoundsPadding.x;
-        float minY = center.y - halfHeight + m_BoundsPadding.y;
-        float maxY = center.y + halfHeight - m_BoundsPadding.y;
+        float minX = view.xMin + m_BoundsPadding.x;
+        float maxX = view.xMax - m_BoundsPadding.x;
+        float minY = view.yMin + m_BoundsPadding.y;
+        float maxY = view.yMax - m_BoundsPadding.y;
 
         return new Vector2(Mathf.Clamp(position.x, minX, maxX), Mathf.Clamp(position.y, minY, maxY));
     }

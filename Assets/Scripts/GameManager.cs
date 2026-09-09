@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,10 +7,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private PlayerController m_PlayerPrefab;
     private PlayerController m_Player;
-
-    [SerializeField]
-    private List<EnemyController> m_EnemyPrefabs;
-    private readonly List<EnemyController> m_Enemies = new List<EnemyController>();
 
     private HealthComponent m_PlayerHealth;
 
@@ -58,30 +53,10 @@ public class GameManager : MonoBehaviour
     {
         m_Player = Instantiate(m_PlayerPrefab);
         m_PlayerHealth = m_Player.GetComponent<HealthComponent>();
-
-        AddEnemy(Instantiate(m_EnemyPrefabs[0], new Vector3(2.0f, 6.5f, 0.0f), Quaternion.identity));
-        AddEnemy(Instantiate(m_EnemyPrefabs[1], new Vector3(0.5f, 6.5f, 0.0f), Quaternion.identity));
     }
 
-    private void AddEnemy(EnemyController enemy)
-    {
-        enemy.OnEnemyDied += RemoveEnemy;
-        m_Enemies.Add(enemy);
-    }
-
-    private void RemoveEnemy(EnemyController enemy)
-    {
-        enemy.OnEnemyDied -= RemoveEnemy;
-        m_Enemies.Remove(enemy);
-    }
-
-    void Start()
+    private void Start()
     {
         Init();
-    }
-
-    void Update()
-    {
-
     }
 }
