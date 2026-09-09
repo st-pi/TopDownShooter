@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1434336796749439499}
   - component: {fileID: 6445111080422397869}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: EnemyGunship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020d5b819016f92488af26eda503d38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  m_TurnSpeed: 180
+  m_ScoreWorth: 10
 --- !u!61 &1709535948078536103
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -9,6 +9,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float m_TurnSpeed = 180.0f;
 
+    [SerializeField]
+    private int m_ScoreWorth = 5;
+
     private HealthComponent m_HealthComponent;
     private Rigidbody2D m_Rigidbody;
 
@@ -54,6 +57,7 @@ public class EnemyController : MonoBehaviour
 
         if (m_HealthComponent.Health <= 0)
         {
+            GameManager.Instance.AddScore(m_ScoreWorth);
             Die();
         }
     }

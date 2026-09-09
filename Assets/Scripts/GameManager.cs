@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject m_EndScreen;
 
+    private int m_GameScore = 0;
+
+    public int GameScore => m_GameScore;
+
+    public event System.Action<int> OnScoreChanged;
+
     public bool TryGetPlayerHealth(out int health, out int maxHealth)
     {
         if (m_PlayerHealth == null)
@@ -75,5 +81,12 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void AddScore(int value)
+    {
+        m_GameScore += value;
+
+        OnScoreChanged?.Invoke(m_GameScore);
     }
 }
